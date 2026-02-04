@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sys> 
+    <name>EngineerMicroservice</name>
+<ser>
+    <pack>
+    <name>EngineerMicroservice</name>
+    <!--Controller-->
+    <c>
+        <name>part1.Controller</name>
+        <access>PUBLIC</access>
+        <type>CLASS</type>
+        <method>
+            <name>store</name>
+            <returnType>void</returnType>
+            <param>
+                <name>role</name>
+                <type>part1.Role</type>
+            </param>
+        </method>
+        <uRel>
+            <cName>part2.Architects</cName>
+            <type>ASSOCIATION</type>
+        </uRel>
+        <uRel>
+            <cName>part3.Engineers</cName>
+            <type>ASSOCIATION</type>
+        </uRel>
+    </c>
+    
+    <!--Engineer-->
+    <c>
+        <name>part3.Engineer</name>
+        <access>PUBLIC</access>
+        <type>CLASS</type>
+        <attr>
+            <name>id</name>
+            <cName>part3.Engineer</cName>
+            <access>PRIVATE</access>
+            <dName>int</dName>
+        </attr>
+        <attr>
+            <name>projects</name>
+            <cName>part3.Engineer</cName>
+            <access>PRIVATE</access>
+            <dName>java.util.ArrayList</dName>
+        </attr>
+        <attr>
+            <name>projectNumbers</name>
+            <cName>part3.Engineer</cName>
+            <access>PRIVATE</access>
+            <dName>java.util.ArrayList</dName>
+        </attr>
+        <uRel>
+            <cName>part4.Project</cName>
+            <type>ASSOCIATION</type>
+        </uRel>
+        <uRel>
+            <cName>part4.ProjectNumber</cName>
+            <type>ASSOCIATION</type>
+        </uRel>
+    </c>
+    <!--Architect-->
+    <c>
+        <name>part2.Architect</name>
+        <access>PUBLIC</access>
+        <type>CLASS</type>
+        <attr>
+            <name>id</name>
+            <cName>part2.Architect</cName>
+            <access>PRIVATE</access>
+            <dName>int</dName>
+        </attr>
+        <attr>
+            <name>projects</name>
+            <cName>part2.Architect</cName>
+            <access>PRIVATE</access>
+            <dName>java.util.ArrayList</dName>
+        </attr>
+        <attr>
+            <name>projectNumbers</name>
+            <cName>part2.Architect</cName>
+            <access>PRIVATE</access>
+            <dName>java.util.ArrayList</dName>
+        </attr>
+        <uRel>
+            <cName>part4.Project</cName>
+            <type>ASSOCIATION</type>
+        </uRel>
+        <uRel>
+            <cName>part4.ProjectNumber</cName>
+            <type>ASSOCIATION</type>
+        </uRel>
+    </c>
+    
+    <!--Project **-->
+    <c>
+        <name>part4.Project</name>
+        <access>PUBLIC</access>
+        <type>CLASS</type>
+        <attr>
+            <name>projectNumber</name>
+            <cName>part4.Project</cName>
+            <access>PRIVATE</access>
+            <dName>part4.ProjectNumber</dName>
+        </attr>
+        <uRel>
+            <cName>part3.Engineer</cName>
+            <type>ASSOCIATION</type>
+        </uRel>
+        <uRel>
+            <cName>part2.Architect</cName>
+            <type>ASSOCIATION</type>
+        </uRel>
+    </c>
+    
+    <!--Project No Enum-->
+    <c>
+        <name>part4.ProjectNumber</name>
+        <access>PUBLIC</access>
+        <type>ENUM</type>
+    </c>
+</pack>
+</ser>
+</sys>

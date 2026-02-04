@@ -1,0 +1,162 @@
+<sys>
+	<name> coursework </name>
+	<ser><name>Microservice2</name>
+	<pack>
+		<name>Microservice2</name>
+		<c>
+			<name> Microservice2.Controller </name>
+			<access> PUBLIC </access>
+			<type> NAME </type>
+			<attr></attr>
+			<met>
+				<name> Microservice2.Controller.Controller </name>
+				<access> PUBLIC </access>
+				<par>
+					<name> Microservice2.Controller.role </name>
+					<cName> Microservice1.Role </cName>
+				</par>
+			</met>
+			<local>
+				<name> Microservice2.Controller.architects </name>
+				<cname> Microservice54.Architects </cname>
+			</local>
+			<local>
+				<name> Microservice2.Controller.engineers </name>
+				<cname> Microservice4.Engineers </cname>
+			</local>
+		</c>
+	</pack>
+	</ser>
+	<ser><name>Microservice4</name>
+	<pack>
+		<name>Microservice4</name>
+		<c>
+			<name> Microservice4.Engineers </name>
+			<access> PUBLIC </access>
+			<type> CLASS </type>
+			<attr> 
+				<name> Microservice4.Engineers.engineers </name>
+				<access> PRIVATE </access>
+				<cName> Microservice4.Engineers</cName>
+				<dName>java.util.ArrayList</dName>
+			</attr>
+			<uRel> 
+				<cName> Microservice6.Engineer</cName>
+				<type> COMPOSITION </type>
+			</uRel>
+		</c>
+	</pack>
+	</ser>
+	<ser><name>Microservice6</name>
+	<pack>
+		<name>Microservice6</name>
+		<c>
+			<name> Microservice6.Engineer </name>
+			<access> PUBLIC </access>
+			<type> CLASS </type>
+			<attr> 
+				<name> Microservice6.Engineer.projects </name>
+				<access> PRIVATE </access>
+				<cName>Microservice54.project</cName>
+				<dName>java.util.ArrayList</dName>
+			</attr>
+			<attr> 
+				<name> Microservice6.Engineer.projectNumbers </name>
+				<access> PRIVATE </access>
+				<cName> Microservice54.projectNumber</cName>
+				<dName>java.util.ArrayList</dName>
+			</attr>
+			<uRel> 
+				<cName> Microservice54.Project</cName>
+				<type> COMPOSITION </type>
+			</uRel>
+			<uRel> 
+				<cName>Microservice54.ProjectNumber</cName>
+				<type> COMPOSITION </type>
+			</uRel>
+		</c>
+	</pack>
+	</ser>
+	<ser><name>Microservice1</name>
+	<pack>
+		<name>Microservice1</name>
+		<c>
+			<name> Microservice1.Role </name>
+			<access> PUBLIC </access>
+			<type> ENUM </type>
+		</c>
+	</pack>
+	</ser>
+	<ser><name>Microservice54</name>
+	<pack>
+		<name>Microservice54</name>
+		<c>
+			<name>Microservice54.Architects</name>
+			<access>PUBLIC</access>
+			<type>CLASS</type>
+			<attr>
+				<name>Microservice54.Architects.architects</name>
+				<access>PRIVATE</access>
+				<cName>Microservice54.Architect</cName>
+				<dName>java.util.ArrayList</dName>
+				<inName>Microservice54.Architects</inName>
+				<uRel>
+					<name>Microservice54.Architect</name>
+					<type>COMPOSITION</type>
+				</uRel>
+			</attr>
+			<uRel>
+				<cName>Microservice2.Controller</cName>
+				<type>DEPENDENCY</type>
+			</uRel>
+		</c>
+		<c>
+			<name> Microservice54.Architect </name>
+			<access> PUBLIC </access>
+			<type> CLASS </type>
+			<attr>
+				<name> Microservice54.Architect.projects </name>
+				<access> PRIVATE </access>
+				<cName> Microservice54.Project </cName>
+				<dName> java.util.ArrayList </dName>
+				<inName> Microservice54.Architect </inName>
+				<uRel>
+					<cName> Microservice54.Project </cName>
+					<type> COMPOSITION </type>
+				</uRel>
+			</attr>
+			<attr>
+				<name> Microservice54.Architect.projectNumbers </name>
+				<access> PRIVATE </access>
+				<cName> Microservice54.ProjectNumber </cName>
+				<dName> java.util.ArrayList </dName>
+				<inName> Microservice54.Architect </inName>
+				<uRel>
+					<cName> Microservice54.ProjectNumber </cName>
+					<type> COMPOSITION </type>
+				</uRel>
+			</attr>
+		</c>
+		<c>
+			<name>Microservice54.Project</name>
+			<access>PUBLIC</access>
+			<type>CLASS</type>
+			<attr>
+				<name>Microservice54.Project.ProjectNumber</name>
+				<access>PRIVATER</access>
+				<cName>Microservice54.ProjectNumber</cName>
+				<inName>Microservice54.Project</inName>
+				<uRel>
+					<name>Microservice54.ProjectNumber</name>
+					<type>COMPOSITION</type>
+				</uRel>
+			</attr>
+		</c>
+		<c>
+			<name>Microservice54.ProjectNumber</name>
+			<access>PUBLIC</access>
+			<type>ENUM</type>
+		</c>
+	</pack>
+	</ser>
+</sys>

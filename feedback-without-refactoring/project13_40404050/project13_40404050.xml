@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sys>
+	<name>XML1</name> <!-- name of system -->
+	
+	<!-- Microservice7: Controller -->
+	<ser> 
+		<name>mic7</name>
+		
+		<pack>
+			<name>mic7.part1</name>
+			<c>
+				<name>mic7.part1.Controller</name>
+				<access>PUBLIC</access>
+				<type>CLASS</type>
+				
+				
+				<constructor>
+					<access>PUBLIC</access>
+					
+					<par>
+						<name>mic7.part1.Controller.role</name>
+						<cName>mic8.part1.Role</cName>
+					</par>
+					
+					<!-- Instantiated local object: Architects -->
+					<local>
+						<name>mic7.part1.Controller.architects</name>
+						<cName>mic42.part2.Architects</cName>
+					</local>
+					
+					<!-- Instantiated local object: Engineers -->
+					<local>
+						<name>mic7.part1.Controller.engineers</name>
+						<cName>mic39.part3.Engineers</cName>
+					</local>
+				</constructor>
+				
+				
+				<!-- Relationships with other classes -->
+				<!-- mic8 -->
+				<uRel>
+					<cName>mic8.part1.Role</cName>
+					<type>ASSOCIATION</type>
+				</uRel>
+				
+				<!-- mic42 -->
+				<uRel>
+					<cName>mic42.part2.Architects</cName>
+					<type>DEPENDENCY</type>
+				</uRel>
+				
+				<!--  mic39 -->
+				<uRel>
+					<cName>mic39.part3.Engineers</cName>
+					<type>DEPENDENCY</type>
+				</uRel>
+				
+			</c>
+		</pack>
+	</ser>
+	
+	<!-- Microservice8: Role -->
+	<ser>
+		<name>mic8</name>
+		
+		<pack>
+			<name>mic8.part1</name>
+			
+			<c>
+				<name>mic8.part1.Role</name>
+				<access>PUBLIC</access>
+				<type>ENUM</type>
+			</c>
+			
+		</pack>
+	</ser>
+	
+	
+	<!-- Microservice42: Architects + Architect + Project + ProjectNumber -->
+	<ser>
+		<name>mic42</name>
+		
+		<pack>
+			<name>mic42.part2</name>
+			
+			<!-- Architects -->
+			<c>
+				<name>mic42.part2.Architects</name>
+				<access>PUBLIC</access>
+				<type>CLASS</type>
+				
+				<attr>
+					<name>mic42.part2.Architects.architects</name>
+					<cName>mic42.part2.Architect</cName>
+					
+					<access>PRIVATE</access>
+					<type>LIST</type>
+					
+					<inName>mic42.part2.Architects</inName>
+				</attr>
+			</c>
+				
+				
+			<!-- Architect -->			
+			<c>
+				<name>mic42.part2.Architect</name>
+				<access>PUBLIC</access>
+				<type>CLASS</type>
+				
+				<attr>
+					<name>mic42.part2.Project.projects</name>
+					<cName>mic42.part4.Project</cName>
+					
+					<access>PRIVATE</access>
+					<type>LIST</type>
+					
+					<inName>mic42.part2.Architect</inName>
+				</attr>
+				
+				<attr>
+					<name>mic42.part2.ProjectNumber.projectNumbers</name>
+					<cName>mic42.part4.ProjectNumber</cName>
+					
+					<access>PRIVATE</access>
+					<type>LIST</type>
+					
+					<inName>mic42.part2.Architect</inName>
+				</attr>
+				
+				<!-- Architect relationship with Architects -->
+				<uRel>
+					<cName>mic42.part2.Architects</cName>
+					<type>COMPOSITION</type>
+				</uRel>
+			</c>
+			
+			
+			<!-- Project -->
+			<c>
+				<name>mic42.part4.Project</name>
+				<access>PUBLIC</access>
+				<type>CLASS</type>
+				
+				<attr>
+					<name>mic42.part4.Project.projectNumber</name>
+					<cName>mic42.part4.ProjectNumber</cName>
+					<access>PRIVATE</access>
+					<inName>mic42.part4.Project</inName>
+				</attr>
+				
+				
+				<!-- Project relationship with Engineer & Architect -->
+				<uRel>
+					<cName>mic39.part3.Engineer</cName>
+					<type>COMPOSITION</type>
+				</uRel>
+				
+				<uRel>
+					<cName>mic42.part2.Architect</cName>
+					<type>COMPOSITION</type>
+				</uRel>
+				
+			</c>
+			
+			
+			<!-- ProjectNumber -->
+			<c>
+				<name>mic42.part4.ProjectNumber</name>
+				<access>PUBLIC</access>
+				<type>ENUM</type>
+				
+				<!-- relationships -->
+				<uRel>
+					<cName>mic39.part3.Engineer</cName>
+					<type>COMPOSITION</type>
+				</uRel>
+				
+				<uRel>
+					<cName>mic42.part2.Architect</cName>
+					<type>COMPOSITION</type>
+				</uRel>
+				
+				<uRel>
+					<cName>mic42.part4.Project</cName>
+					<type>COMPOSITION</type>
+				</uRel>
+			</c>
+			
+		</pack>
+	</ser>
+	
+	
+	<!-- Microservice39: Engineers + Engineer -->
+	<ser>
+		<name>mic39</name>
+		
+		<pack>
+			<name>mic39.part3</name>
+			
+			<!-- Engineers -->
+			<c>
+				<name>mic39.part3.Engineers</name>
+				<access>PUBLIC</access>
+				<type>CLASS</type>
+				
+				<attr>
+					<name>mic39.part3.Engineers.engineers</name>
+					<cName>mic39.part3.Engineer</cName>
+					
+					<access>PRIVATE</access>
+					<type>LIST</type>
+					
+					<inName>mic39.part3.Engineers</inName>
+				</attr>
+			</c>
+		
+		
+			<!-- Engineer -->		
+			<c>
+				<name>mic39.part3.Engineer</name>
+				<access>PUBLIC</access>
+				<type>CLASS</type>
+				
+				<attr>
+					<name>mic39.part3.Project.projects</name>
+					<cName>mic42.part4.Project</cName>
+					
+					<access>PRIVATE</access>
+					<type>LIST</type>
+					
+					<inName>mic39.part3.Engineer</inName>
+				</attr>
+				
+				<attr>
+					<name>mic39.part3.ProjectNumber.projectNumbers</name>
+					<cName>mic42.part4.ProjectNumber</cName>
+					
+					<access>PRIVATE</access>
+					<type>LIST</type>
+					
+					<inName>mic39.part3.Engineer</inName>
+				</attr>
+				
+				<!-- Engineer relationship with Engineers -->
+				<uRel>
+					<cName>mic39.part3.Engineers</cName>
+					<type>COMPOSITION</type>
+				</uRel>
+				
+			</c>
+		</pack>
+	</ser>
+	    
+</sys>

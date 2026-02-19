@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sys>
+	<name> assignment1</name>
+	<!-- Microservice 1: Architects -->
+	<ser>
+		<name> mic1</name>
+		<pack>
+			<name> mic1.part2</name>
+			<c>
+				<name>mic1.part2.Architects</name>
+				<access>PUBLIC</access>
+				<TYPE> CLASS </TYPE>
+				<attr>
+					<name> mic1.part2.Architects.architects</name>
+					<cname>java.util.ArrayList</cname>
+					<access> PRIVATE</access>
+				</attr>
+			</c>
+			<c>
+				<name>mic1.part2.Architect</name>
+				<access>PUBLIC</access>
+				<TYPE> CLASS </TYPE>
+				<attr>
+					<name> mic1.part2.Architect.id</name>
+					<cname> int </cname>
+					<access> PRIVATE</access>
+				</attr>
+				<attr>
+					<name> mic1.part2.Architect.projects</name>
+					<cname>java.util.ArrayList</cname>
+					<access> PRIVATE</access>
+				</attr>
+				<attr>
+					<name> mic1.part2.Architect.projectNumbers</name>
+					<cname>java.util.ArrayList</cname>
+					<access> PRIVATE</access>
+				</attr>
+			</c>
+		</pack>
+	</ser>
+	<!-- Microservice 2: Engineers -->
+	<ser>
+		<name> mic2</name>
+		<pack>
+			<name> mic2.part3</name>
+			<c>
+				<name>mic2.part3.Engineers</name>
+				<access>PUBLIC</access>
+				<TYPE> CLASS </TYPE>
+				<attr>
+					<name> mic2.part3.Engineers.engineers</name>
+					<cname>java.util.ArrayList</cname>
+					<access> PRIVATE</access>
+				</attr>
+			</c>
+			<c>
+				<name>mic2.part3.Engineer</name>
+				<access>PUBLIC</access>
+				<TYPE> CLASS </TYPE>
+				<attr>
+					<name> mic2.part3.Engineer.id</name>
+					<cname> int </cname>
+					<access> PRIVATE</access>
+				</attr>
+				<attr>
+					<name> mic2.part3.Engineer.projects</name>
+					<cname>java.util.ArrayList</cname>
+					<access> PRIVATE</access>
+				</attr>
+				<attr>
+					<name> mic2.part3.Engineer.projectNumbers</name>
+					<cname>java.util.ArrayList</cname>
+					<access> PRIVATE</access>
+				</attr>
+			</c>
+		</pack>
+	</ser>
+	<!-- Microservice 3: Projects -->
+	<ser>
+		<name>mic3</name>
+		<pack>
+			<name>mic3.part4</name>
+			<c>
+				<name>mic3.part4.Project</name>
+				<access>PUBLIC</access>
+				<type>CLASS</type>
+				<attr>
+					<name>mic3.part4.Project.projectNumber</name>
+					<cName>part4.ProjectNumber</cName>
+					<access>PRIVATE</access>
+				</attr>
+				<uRel>
+					<cName>mic3.part4.ProjectNumber</cName>
+					<type>ASSOCIATION</type>
+				</uRel>
+			</c>
+			<c>
+				<name>mic3.part4.ProjectNumber</name>
+				<access>PUBLIC</access>
+				<type>ENUM</type>
+				<vals>
+					<val>P_1</val>
+					<val>P_2</val>
+					<val>P_3</val>
+					<val>P_4</val>
+					<val>P_5</val>
+				</vals>
+			</c>
+		</pack>
+	</ser>
+	<!-- Microservice 4: Controller -->
+	<ser>
+		<name>mic4</name>
+		<pack>
+			<name>mic4.part1</name>
+			<c>
+				<name>mic4.part1.Controller</name>
+				<access>PUBLIC</access>
+				<type>CLASS</type>
+				<met>
+					<name>mic4.part1.Controller.Controller</name>
+					<access>PUBLIC</access>
+					<par>
+						<name>mic4.part1.Controller.Controller.role</name>
+						<cName>mic5.part1.Role</cName>
+					</par>
+					<local>
+						<name>mic4.part1.Controller.Controller.architects</name>
+						<cName>mic1.part2.Architects</cName>
+					</local>
+					<local>
+						<name>mic4.part1.Controller.Controller.engineers</name>
+						<cName>mic2.part3.Engineers</cName>
+					</local>
+				</met>
+				<uRel>
+					<cName>mic5.part1.Role</cName>
+					<type>ASSOCIATION</type>
+				</uRel>
+				<uRel>
+					<cName>mic1.part2.Architects</cName>
+					<type>ASSOCIATION</type>
+				</uRel>
+				<uRel>
+					<cName>mic2.part3.Engineers</cName>
+					<type>ASSOCIATION</type>
+				</uRel>
+			</c>
+		</pack>
+	</ser>
+	<!-- Microservice 5: Roles -->
+	<ser>
+		<name>mic5</name>
+		<pack>
+			<name>mic5.part1</name>
+			<c>
+				<name>mic5.part1.Role</name>
+				<access>PUBLIC</access>
+				<type>ENUM</type>
+				<vals>
+					<val>ENGINEER</val>
+					<val>ARCHITECT</val>
+				</vals>
+			</c>
+		</pack>
+	</ser>
+</sys>
